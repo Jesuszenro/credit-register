@@ -24,10 +24,17 @@ The application follows a  Model-View-Component (MVC)-like structure where:
 
 ### 📌 Components diagram
 
-![Components Diagram](path/to/your/components_image.png)
+![Components Diagram](https://github.com/Jesuszenro/credit-register/blob/main/images/components%20diagram.png)
+
+## 🏛️ Data model
+
+### 💡 Class diagram
+
+![Class Diagram](https://github.com/Jesuszenro/credit-register/blob/main/images/class%20diagram.png)
 
 ## 🧩 Main flow
 
 ### 🔄 Sequence diagram
 
 Describes the flow for registering a credit:
+![Sequence Diagram](https://github.com/Jesuszenro/credit-register/blob/main/images/sequence%20diagram.png)
