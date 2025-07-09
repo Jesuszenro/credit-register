@@ -5,16 +5,12 @@ Web application developed with **Python Flask**, **SQLite**, **HTML/CSS**, **Jav
 
 - [🚀 Objective](#-objective)
 - [⚙️ Technologies used](#️-technologies-used)
-- [📝 Instructions](#️-instructions)
-- [🗂️ Architecture](#️-general-architecture)
-- [🏛️ Data model](#️-data-model)
-- [🔄 🧩 Main flow](#️-main-flow)
+- [📝 Instructions](#-instructions)
+- [🕋 Architecture](#-architecture)
+- [💎 Data model](#-data-model)
+- [🧩 Main flow](#-main-flow)
 - [💻 Backend](#-backend--api-documentation)
-- [🖥️ Frontend](#-frontend)
-- [📊 Visualization](#-visualization)
-- [📝 Notes](#-notes)
-- [🤝 Contributions](#-contributions)
-- [📄 License](#-license)
+
 
 ## 🚀 Objective
 Allow users to register credits, store them in a SQLite database, and visualize total credits by charts.
@@ -30,7 +26,7 @@ Allow users to register credits, store them in a SQLite database, and visualize 
 
 ## 📝 Instructions
 
-##  🗂️ General architecture
+## 🕋 Architecture
 The application follows a  Model-View-Component (MVC)-like structure where:
 - **Models** are represented with SQLite
 - **Controllers** routes and manage API logic using Flask
@@ -40,7 +36,7 @@ The application follows a  Model-View-Component (MVC)-like structure where:
 
 ![Components Diagram](https://github.com/Jesuszenro/credit-register/blob/main/images/components%20diagram.png)
 
-## 🏛️ Data model
+## 💎 Data model
 
 ### 💡 Class diagram
 
