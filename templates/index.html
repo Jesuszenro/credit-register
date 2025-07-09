@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Credit Register</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+</head>
+
+<body>
+  <div class="dashboard">
+
+    <aside class="sidebar">
+      <h2>Credits</h2>
+      <ul>
+        <li><a href="/credits"><i class="fa fa-list"></i> View Credits</a></li>
+        <li><a href="/credits/add"><i class="fa fa-plus"></i> Add Credit</a></li>
+        <li><a href="/credits/transactions"><i class="fa fa-exchange-alt"></i> Transactions</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <header>
+        <h1>Hello, Welcome</h1>
+        <p>Your credit resume</p>
+      </header>
+
+      <section class="stats"> 
+        <div class="stat-card">
+          <h3>Total Credits</h3>
+          <p>10</p>
+        </div>
+        <div class="stat-card">
+          <h3>Total Amount</h3>
+          <p>$200,000</p>
+        </div>
+      </section>
+
+      <div class="grid-container">
+        <section class="credit-list">
+          <h2>Your last credit</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Client</th>
+                <th>Amount</th>
+                <th>Interest</th>
+                <th>Term</th>
+                <th>Grant Day</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Juan</td>
+                <td>$50,000</td>
+                <td>12%</td>
+                <td>24</td>
+                <td>2025-07-09</td>
+                <td>
+                  <button>Edit</button>
+                  <button>Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="chart-section">
+          <h2>Credits chart</h2>
+          <canvas id="creditChart" width="400" height="200"></canvas>
+        </section>
+      </div>
+
+    </main>
+  </div>
+
+</body>
+</html>

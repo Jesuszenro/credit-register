@@ -1,8 +1,13 @@
-from flask import Flask, request, jsonify
+from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')  # Render the main page
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///credits.db'  # Database URI for SQLite
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -52,7 +57,7 @@ def get_credits():
         })
     return jsonify(output), 200
 
-# Edit a credit
+# Update a credit
 @app.route('/credits/<int:id>', methods=['PUT'])    # Route to edit a credit by its ID
 def update_credit (id):
     credit = Credit.query.get_or_404(id)    # Get the credit by ID or return 404 if not found
