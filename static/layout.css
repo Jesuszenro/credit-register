@@ -1,0 +1,39 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #111;
+    color: #f5f6fa;
+    width: 100%;
+    padding: 80px 0 180px 0;
+    box-sizing: border-box;
+    position: relative;
+    overflow-x: hidden;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: normal;
+}
+
+header p {
+    color: #bbb;
+    margin-top: 10px;
+    font-size: 18px;
+    max-width: 600px;
+    line-height: 1.5;
+}
