@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registered Credits</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>Registered Credits</h1>
+        <p>Here you can view all the registered credits.</p>
+        <a href="{{ url_for('new_credit') }}" class="btn">Añadir Nuevo Crédito</a>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Client</th>
+                    <th>Amount</th>
+                    <th>Interest (%)</th>
+                    <th>Term (meses)</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for credit in credits %}
+                <tr>
+                    <td>{{ credit.id }}</td>
+                    <td>{{ credit.client }}</td>
+                    <td>${{ credit.amount }}</td>
+                    <td>{{ credit.interest }}%</td>
+                    <td>{{ credit.term }}</td>
+                    <td>{{ credit.grant_day }}</td>
+                    <td>
+                        {#
+                            <a href="{{ url_for('edit_credit', id=credit.id) }}" class="btn">Edit</a>
+                        <a href="{{ url_for('delete_credit', id=credit.id) }}" class="btn">Delete</a>
+                        #}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+
+</html>

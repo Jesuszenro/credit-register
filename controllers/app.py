@@ -1,35 +1,27 @@
 from flask import Flask, render_template, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
+from models.credit import db, Credit  # Import the database and Credit model
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../templates', static_folder='../static')
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///credits.db'  # Database URI for SQLite
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db.init_app(app)  # Initialize the SQLAlchemy extension with the Flask app
+
+with app.app_context():
+    db.create_all()  # Create the database tables if they don't exist
+
 
 @app.route('/')
 def index():
     return render_template('index.html')  # Render the main page
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///credits.db'  # Database URI for SQLite
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = SQLAlchemy(app)
-
-class Credit(db.Model):
-    id = db.Column(db.Integer, primary_key=True)    # Unique identifier for each credit
-    client = db.Column(db.String(80), nullable=False)   # Client's name 
-    amount = db.Column(db.Float, nullable=False)    # Amount of credit in currency units
-    interest_rate = db.Column (db.Float, nullable=False)    # Annual interest rate in percentage
-    term = db.Column(db.Integer, nullable=False)  # Term in months
-    grant_day = db.Column (db.String(10), nullable=False)   # Start date of the credit in YYYY-MM-DD format
-
-with app.app_context():
-    db.create_all()  # Create the database tables if they don't exist
-
-# CRUD operations for credits 
-
-    # Register a new credit
+################# CRUD operations for credits 
+# Register a new credit
 @app.route('/credits', methods=['POST'])    
 def register_credit():
-    data = request.get_json()   # Get JSON data from the request
+    data = request.form   # Get JSON data from the request
     new_credit = Credit(
         client=data['client'],
         amount=data['amount'],
@@ -41,21 +33,15 @@ def register_credit():
     db.session.commit()
     return jsonify({'message': 'Credit registered successfully!'}), 201
 
+@app.route('/credits/new', methods=['GET'])
+def new_credit():
+    return render_template('new_credit.html')
+
 # Get all credits
-@app.route('/credits', methods=['GET'])
-def get_credits():
-    credits = Credit.query.all()    # Query all credits from the database
-    output = []
-    for credit in credits:
-        output.append({
-            'id': credit.id,    
-            'client': credit.client,    
-            'amount': credit.amount,
-            'interest_rate': credit.interest_rate,    
-            'term': credit.term,    
-            'grant_day': credit.grant_day    
-        })
-    return jsonify(output), 200
+@app.route('/credits/view', methods=['GET'])
+def view_credits():
+    credits = Credit.query.all()
+    return render_template('credits.html', credits=credits)
 
 # Update a credit
 @app.route('/credits/<int:id>', methods=['PUT'])    # Route to edit a credit by its ID
