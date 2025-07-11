@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard/style.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </head>
 
 <body>
@@ -20,7 +20,9 @@
                     <p>Manage and track all your credit records in one place. Quickly review summaries, analyze trends,
                         and keep your portfolio up to date.</p>
                 </div>
-                <button class="big-button"><i class="fas fa-plus"></i> Add Credit</button>
+                <a href="{{ url_for('new_credit') }}" class="big-button">
+                    <i class="fas fa-plus"></i> Add Credit
+                </a>
             </div>
         </header>
 

@@ -5,48 +5,71 @@
     <meta charset="UTF-8">
     <title>Registered Credits</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/credits-view/visualize-credits.css')}}">
 </head>
 
 <body>
     <header>
         <h1>Registered Credits</h1>
         <p>Here you can view all the registered credits.</p>
-        <a href="{{ url_for('new_credit') }}" class="btn">Añadir Nuevo Crédito</a>
+        <a href="{{ url_for('new_credit') }}" class="btn">Add a new credit</a>
+        <a href="{{ url_for('index') }}" class="btn">Back to dashboard</a>
     </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div id="flash-container">
+        {% for category, message in messages %}
+        <div class="flash-message {{ category }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
     <main>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Client</th>
-                    <th>Amount</th>
-                    <th>Interest (%)</th>
-                    <th>Term (meses)</th>
-                    <th>Date</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {%for credit in credits %}
-                <tr>
-                    <td>{{ credit.id }}</td>
-                    <td>{{ credit.client }}</td>
-                    <td>${{ credit.amount }}</td>
-                    <td>{{ credit.interest }}%</td>
-                    <td>{{ credit.term }}</td>
-                    <td>{{ credit.grant_day }}</td>
-                    <td>
-                        {#
-                            <a href="{{ url_for('edit_credit', id=credit.id) }}" class="btn">Edit</a>
-                        <a href="{{ url_for('delete_credit', id=credit.id) }}" class="btn">Delete</a>
-                        #}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Client</th>
+                        <th>Amount</th>
+                        <th>Interest (%)</th>
+                        <th>Term (meses)</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for credit in credits %}
+                    <tr id="row-{{ credit.id }}">
+                        <!-- Mostrar texto por defecto -->
+                        <td>{{ credit.id }}</td>
+                        <td id="client-{{ credit.id }}">{{ credit.client }}</td>
+                        <td id="amount-{{ credit.id }}">${{ credit.amount }}</td>
+                        <td id="interest-{{ credit.id }}">{{ credit.interest_rate }} %</td>
+                        <td id="term-{{ credit.id }}">{{ credit.term }}</td>
+                        <td id="date-{{ credit.id }}">{{ credit.grant_day }}</td>
+                        <td>
+                            <button type="button" onclick="enableEdit('{{ credit.id }}')" class="btn">Edit</button>
+                            <form action="{{ url_for('delete_credit', id=credit.id) }}" method="post"
+                                style="display:inline;">
+                                <button type="submit"
+                                    onclick="return confirm('Are you sure you want to delete this credit?');"
+                                    class="btn">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </main>
+
+    <script src="{{ url_for('static', filename='js/edit-table.js') }}"></script>
+
 </body>
 
 </html>

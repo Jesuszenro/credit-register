@@ -22,8 +22,17 @@ header .container {
     padding: 0 20px;
     box-sizing: border-box;
     width: 100%;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: slideFadeIn 0.8s ease forwards;
 }
 
+@keyframes slideFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 header h1 {
     margin: 0;
     font-size: 32px;
