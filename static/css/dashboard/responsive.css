@@ -1,0 +1,20 @@
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        flex-direction: column;
+        transform: none;
+    }
+
+    header {
+        padding: 30px 0 60px 0;
+        overflow-x: hidden;
+    }
+
+    .main-content {
+        margin: 0 auto 20px auto;
+        transform: translateY(-40px);
+    }
+}
