@@ -14,6 +14,19 @@
         <a href="{{ url_for('view_credits') }}" class="btn">View the list</a>
         <a href="{{ url_for('index') }}" class="btn">Back to the dashboard</a>
     </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div id="flash-container">
+        {% for category, message in messages %}
+        <div class="flash-message {{ category }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
     <main>
         <form action="{{ url_for('register_credit') }}" method="post">
             <label for="client">Client:</label>
@@ -31,7 +44,7 @@
             <label for="grant_day">Grant Day:</label>
             <input type="date" id="grant_day" name="grant_day" required>
 
-            <button type="submit" class="btn btn-save">Guardar Crédito</button>
+            <button type="submit" class="btn btn-save">Save Credit</button>
         </form>
     </main>
 </body>
