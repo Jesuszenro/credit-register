@@ -61,7 +61,16 @@ def validate_credit_data(client, amount, interest_rate, term, grant_day):
 # Main route to render the index page
 @app.route('/')
 def index():
-    return render_template('index.html')  # Render the main page
+
+    #Obtain the count of credits
+    credits = Credit.query.all()
+    # Count the number of credits
+    total_credits = len(credits)  
+    # Calculate the total amount of all credits
+    total_amount = sum(credit.amount for credit in credits)  
+    # Get the last 3 credits for display
+    last_credits = Credit.query.order_by(Credit.id.desc()).limit(3).all()
+    return render_template('index.html', total_credits=total_credits, total_amount=total_amount, last_credits=last_credits)  # Render the main page
 
 ################# CRUD operations for credits 
 # Register a new credit
@@ -105,7 +114,7 @@ def new_credit():
 # Get all credits
 @app.route('/credits/view', methods=['GET'])
 def view_credits():
-    credits = Credit.query.all()
+    credits = Credit.query.order_by(Credit.id.desc()).all()
     return render_template('credits.html', credits=credits)
 
 # Update a credit
