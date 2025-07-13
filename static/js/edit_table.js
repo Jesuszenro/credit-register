@@ -7,7 +7,7 @@ function enableEdit(id) {
 
     const client = clientTd.innerText.trim();
     const amount = amountTd.innerText.trim().replace('$', '');
-    const interest = interestTd.innerText.trim().replace('%', '');
+    const interest = interestTd.innerText.trim().replace('%', '').trim();
     const term = termTd.innerText.trim();
     const date = dateTd.innerText.trim();
 
