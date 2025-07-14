@@ -65,6 +65,7 @@ View a dynamic chart showing the total credits granted.
 #### ✅ User-Friendly Interface
 Modern and responsive design using HTML, CSS, and JavaScript, providing a smooth user experience.
 
+⚠️ Note: The credits.db file included here is for demonstration purposes only. You can delete it and generate a new empty database by running db.create_all().
 
 
 ## 🕋 Architecture
