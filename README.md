@@ -25,6 +25,47 @@ Allow users to register credits, store them in a SQLite database, and visualize 
 - Chart.js (charts)
 
 ## 📝 Instructions
+### 💻Instalation
+1. Clone the repository
+
+```
+git clone https://github.com/your-user/credit-register.git
+cd credit-register
+```
+2. Clone dependencies
+```
+pip install -r requirements.txt
+```
+3. Execute the app
+```
+python run.py
+```
+If execution doesn't work, initialize database instead and repeat step 4
+```
+python
+>>> from app import db
+>>> db.create_all()
+>>> exit()
+```
+### ✅ ✨ Features
+
+#### ✅ Register Credits
+Users can register new credits using a simple form with fields for client name, amount, interest rate, term (months), and disbursement date. Basic form validations are included to ensure correct input.
+
+#### ✅ View All Credits
+View a table listing all registered credits. Users can easily review each credit's details at a glance.
+
+#### ✅ Edit and Delete Credits
+Update existing credits directly from the table. Credits can also be deleted with a single click (with confirmation).
+
+#### ✅ Interactive Visualization
+View a dynamic chart showing the total credits granted.
+(Optional: distribution by client or by amount ranges can also be displayed.)
+
+#### ✅ User-Friendly Interface
+Modern and responsive design using HTML, CSS, and JavaScript, providing a smooth user experience.
+
+
 
 ## 🕋 Architecture
 The application follows a  Model-View-Component (MVC)-like structure where:
