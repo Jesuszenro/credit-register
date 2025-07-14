@@ -45,7 +45,7 @@
                 <tbody>
                     {% for credit in credits %}
                     <tr id="row-{{ credit.id }}">
-                        <!-- Mostrar texto por defecto -->
+                        <!-- Use the credit ID to uniquely identify each row -->
                         <td>{{ credit.id }}</td>
                         <td id="client-{{ credit.id }}">{{ credit.client }}</td>
                         <td id="amount-{{ credit.id }}">${{ credit.amount }}</td>
@@ -53,6 +53,7 @@
                         <td id="term-{{ credit.id }}">{{ credit.term }}</td>
                         <td id="date-{{ credit.id }}">{{ credit.grant_day }}</td>
                         <td>
+                            <!-- Add buttons for editing and deleting -->
                             <button type="button" onclick="enableEdit('{{ credit.id }}')" class="btn">Edit</button>
                             <form action="{{ url_for('delete_credit', id=credit.id) }}" method="post"
                                 style="display:inline;">
