@@ -49,21 +49,28 @@ python
 ```
 ### ✅ ✨ Features
 
+#### ✅ User-Friendly Interface
+Modern and responsive design using HTML, CSS, and JavaScript, providing a smooth user experience.
+![Main_page](https://github.com/Jesuszenro/credit-register/blob/main/images/main%20page.png)
+
+#### ✅ Interactive Visualization
+View a dynamic chart showing the total credits granted and a table of lastest credits.
+![Chart](https://github.com/Jesuszenro/credit-register/blob/main/images/chart.png)
+
 #### ✅ Register Credits
 Users can register new credits using a simple form with fields for client name, amount, interest rate, term (months), and disbursement date. Basic form validations are included to ensure correct input.
+![Register](https://github.com/Jesuszenro/credit-register/blob/main/images/register_credit.png)
 
 #### ✅ View All Credits
 View a table listing all registered credits. Users can easily review each credit's details at a glance.
+![Credits](https://github.com/Jesuszenro/credit-register/blob/main/images/credits.png)
 
 #### ✅ Edit and Delete Credits
 Update existing credits directly from the table. Credits can also be deleted with a single click (with confirmation).
-
-#### ✅ Interactive Visualization
-View a dynamic chart showing the total credits granted.
-(Optional: distribution by client or by amount ranges can also be displayed.)
-
-#### ✅ User-Friendly Interface
-Modern and responsive design using HTML, CSS, and JavaScript, providing a smooth user experience.
+![Edit](https://github.com/Jesuszenro/credit-register/blob/main/images/edit_credit.png)
+![Delete](https://github.com/Jesuszenro/credit-register/blob/main/images/delete_credit.png)
+A upcoming message will be shown once the deletion is completed
+![Delete_success](https://github.com/Jesuszenro/credit-register/blob/main/images/delete_successful.png)
 
 ⚠️ Note: The credits.db file included here is for demonstration purposes only. You can delete it and generate a new empty database by running db.create_all().
 
