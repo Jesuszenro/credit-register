@@ -30,11 +30,13 @@
             <main class="main-content">
                 <!-- Stats -->
                 <section class="stats">
+                    <!-- Total Credits -->
                     <div class="stat-card">
                         <i class="fas fa-credit-card icon"></i>
                         <div class="value">{{ total_credits }}</div>
                         <div class="label">Total credits</div>
                     </div>
+                    <!-- Total Amount -->
                     <div class="stat-card">
                         <i class="fas fa-chart-line icon"></i>
                         <div class="value">${{ '{:,.2f}'.format(total_amount) }}</div>
@@ -44,6 +46,7 @@
 
                 <!-- Grid -->
                 <div class="grid-container">
+                    <!-- Last Credits -->
                     <section class="credit-list">
                         <i class="fas fa-list icon"></i>
                         <p>Your lastests credits</p>
@@ -59,14 +62,16 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <!-- Loop through the last credits -->
                                 {% for credit in last_credits %}
                                 <tr>
                                     <td>{{ credit.client }}</td>
                                     <td>${{ '{:,.2f}'.format(credit.amount) }}</td>
                                     <td>{{ credit.interest_rate }}%</td>
                                     <td>{{ credit.term }}</td>
-                                    <td>{{ credit.grant_date }}</td>
+                                    <td>{{ credit.grant_day }}</td>
                                     <td>
+                                        <!-- Add buttons for editing and deleting -->
                                         <form action="{{ url_for('delete_credit', id=credit.id) }}" method="post"
                                             style="display:inline;">
                                             <button type="submit"
@@ -83,15 +88,25 @@
                             </a>
                         </div>
                     </section>
-
+                    <!-- Credit Chart -->
                     <section class="chart-section">
-                        <i class="fas fa-chart-pie icon"></i>
-                        <p>Credit Chart</p>
-                        <canvas id="creditChart" width="400" height="200"></canvas>
+                        <div class="button-group">
+                            <i class="fas fa-chart-pie icon"></i>
+                            <p>Credit Chart</p>
+                            <!-- Buttons to load different chart types -->
+                            <button class="big-button dark small-button" onclick="loadChart('client')">By Client </button>
+                            <button class="big-button dark small-button" onclick="loadChart('total')">By Month</button>
+                            <button class="big-button dark small-button" onclick="loadChart('range')">By Range</button>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="creditChart"></canvas>
+                        </div>
                     </section>
+
                 </div>
             </main>
         </div>
     </div>
 </body>
+
 </html>
