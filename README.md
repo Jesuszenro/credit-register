@@ -111,66 +111,23 @@ It uses SQLAlchemy as the ORM to interact with the SQLite database.
 | term        | Integer | Term in months            |
 | grant_day | String | Grant date (YYYY-MM-DD) |
 
-### 💻 API Endpoints
-#### 🟢 Create credit
-- Method: POST
-- URL: /credit
-- Body example (JSON):
-```json
-{
-  "client": "Juan Pérez",
-  "amount": 5000,
-  "interest_rate": 12.5,
-  "term": 12,
-  "grant_day": "2025-07-09"
-}
-```
-Response example
-```
-{
-  'message': 'Credit registered successfully!'
-}
-```
-#### 🔵 Get all credits
-- Method: GET
-- URL: /creditos
-- Response example:
-```json
-[
-  {
-    "id": 1,
-    "client": "Juan Pérez",
-    "amount": 5000,
-    "interest_rate": 12.5,
-    "term": 12,
-    "grant_day": "2025-07-09"
-  }
-]
-```
-#### 🟠 Update credit
-- Method: PUT
-- URL: /creditos/{id}
-- Body example (JSON):
-```json
-{
-  "client": "John",
-  "amount": 5500
-}
-```
-Response example:
+### 🔄 Workflow
+#### 1️. Database connection
+When the app starts, it connects to the SQLite database (credits.db), which is defined and managed in the instance/ folder.
 
-```json
-{
-  'message': 'Credit updated successfully!'
-}
-```
-#### 🔴 Delete credit
-- Method: DELETE
-- URL: /creditos/{id}
-- Response example:
-```json
-{
-  'message': 'Credit deleted successfully!'
-}
-```
+#### 2️. Models
+The Credit model (defined in models/credit.py) describes the structure of each credit record, including fields like client name, amount, interest rate, term, and disbursement date.
 
+#### 3️. Routing
+The main routes (defined in controllers/app.py or app.py) handle:
+
+Registering a new credit: Receives form data and saves it to the database.
+
+Listing credits: Queries and displays all stored credits in a table view.
+
+Editing credits: Updates existing records in the database.
+
+Deleting credits: Removes selected records.
+
+#### 4️. Validations and feedback
+Flask's built-in features (like flash messages) are used to give users feedback after operations (e.g., "Credit added successfully!").
